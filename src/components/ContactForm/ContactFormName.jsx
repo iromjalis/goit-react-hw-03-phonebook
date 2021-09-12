@@ -1,11 +1,12 @@
 import React from "react";
 
-const ContactFormName = ({ title, onChange, value }) => {
+const ContactFormName = ({ title, onChange, value, nameInputId }) => {
   return (
     <>
-      <label htmlFor="">
+      <label htmlFor={nameInputId}>
         {title}
         <input
+          id={nameInputId}
           value={value}
           onChange={onChange}
           type="text"
