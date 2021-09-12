@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import shortid from "shortid";
 // import PropTypes from "prop-types";
 
 import css from "./ContactForm.module.css";
@@ -7,10 +8,13 @@ import ContactFormNumber from "./ContactFormNumber";
 
 class ContactForm extends Component {
   state = {
-    Name: "",
-    Number: "",
+    name: "",
+    number: "",
   };
 
+  nameInputId = shortid.generate();
+
+  numberInputId = shortid.generate();
   handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
@@ -19,19 +23,21 @@ class ContactForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleSubmit(this.state);
-    this.setState({ Name: "", Number: "" });
+    this.props.onSubmit(this.state);
+    this.setState({ name: "", number: "" });
   };
   render() {
     return (
       <form className={css.ContactFormWrapper} onSubmit={this.handleSubmit}>
         <ContactFormName
-          title="Name"
-          value={this.state.Name}
+          nameInputId={this.nameInputId}
+          title="name"
+          value={this.state.name}
           onChange={this.handleChange}
         />
         <ContactFormNumber
-          title="Number"
-          value={this.state.Number}
+          title="number"
+          value={this.state.number}
           onChange={this.handleChange}
         />
         <button type="submit">Send</button>
