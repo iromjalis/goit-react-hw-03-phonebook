@@ -4,7 +4,7 @@ const ContactFormNumber = ({ title, onChange, value }) => {
   return (
     <>
       <label htmlFor="">
-        Number
+        {title}
         <input
           value={value}
           placeholder={title}
