@@ -13,9 +13,9 @@ class App extends Component {
       { id: "id-3", name: "Eden Clements", number: "645-17-79" },
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
-    filter: "",
-    name: "",
-    number: "",
+    Filter: "",
+    Name: "",
+    Number: "",
   };
   handleSubmit = (data) => {
     this.setState({ ...data });
@@ -23,6 +23,15 @@ class App extends Component {
   handleFilterChange = (filter) => {
     this.setState({ ...filter });
   };
+  handleDeleteContact = (contactId) => {
+    console.log(contactId);
+    this.setState((prevState) => ({
+      contacts: prevState.contacts.filter(
+        (contact) => contact.id !== contactId
+      ),
+    }));
+  };
+
   render() {
     const { name, number, filter, contacts } = this.state;
     const filtered = contacts.map((contact) => contact.name === filter);
@@ -40,7 +49,10 @@ class App extends Component {
             filter={filter}
             handleFilterChange={this.handleFilterChange}
           />
-          <ContactList contacts={contacts} />
+          <ContactList
+            contacts={contacts}
+            handleDeleteContact={this.handleDeleteContact}
+          />
         </Container>
       </>
     );

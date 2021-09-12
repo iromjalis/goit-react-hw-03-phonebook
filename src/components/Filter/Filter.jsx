@@ -16,8 +16,9 @@ class Filter extends Component {
       <div className="FilterWrapper">
         <form action="">
           <label htmlFor="">
-            <p> Find contactas by name</p>
+            <p> Find contacts by name</p>
             <input
+              placeholder="Find contacts"
               onChange={this.handleFilter}
               type="text"
               name="name"

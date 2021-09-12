@@ -3,15 +3,15 @@ import React, { Component } from "react";
 //import { Test } from './ContactList.styles';
 
 class ContactList extends Component {
-  handleDeleteContact = (e) => {};
   render() {
+    const { handleDeleteContact } = this.props;
     const { contacts } = this.props;
     return (
       <div className="ContactListWrapper">
         {contacts.map(({ id, name, number }) => (
           <li key={id}>
             {name} {number}
-            <button type="button" onClick={this.handleDeleteContact}>
+            <button type="button" onClick={() => handleDeleteContact(id)}>
               Delete
             </button>
           </li>
